@@ -1,0 +1,14 @@
+{
+	"image": "responsivecodex/alpine-nodejs",
+	"mounts": ["source=${localWorkspaceFolder},target=/usr/src,type=bind,consistency=cached"],
+	"remoteUser": "root",
+	"workspaceFolder": "/usr/src",
+	"forwardPorts": [
+	3000
+	],
+	"postStartCommand": "whoami",
+	"extensions": [
+		"esbenp.prettier-vscode",
+		"glenn2223.live-sass"
+	]
+}
