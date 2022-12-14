@@ -11,8 +11,8 @@ ARG VERSION=1.0
 ARG VCS_URL=https://hub.docker.com/r/responsivecodex/alpine-nodejs                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 ARG VCS_REF=git rev-parse --short HEAD                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 ARG BUILD_DATE=2021-04-29                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-ARG NODEJS_VERSION=14.17.1-r0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-ARG NPM_VERSION=7.17.0-r0   
+ARG NODEJS_VERSION=18.12.1-r0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+ARG NPM_VERSION=9.1.2-r0   
 
 # A little bit of metadata management.
 # See http://label-schema.org/
@@ -55,7 +55,7 @@ ENV NODE_APP_DIR=/usr/src \
 RUN apk update && \
   apk add --update-cache \         
   bash \
-  sudo=1.9.7_p1-r1 \
+  sudo=1.9.12_p1-r1 \
   ip6tables \
   iptables \
   tcptraceroute \
@@ -96,7 +96,8 @@ RUN  echo admin:#Access2010# | chpasswd && \
   echo '#!/usr/bin/env ash' > /etc/profile.d/rc.sh && \
   echo "export PS1=\"\e[0;33m[\u@\D{%d.%m.%Y}\A \w]\$ \e[m\"" >> /etc/profile.d/rc.sh  && \
   chmod +x /etc/profile.d/rc.sh && \
-  echo 'export PS1="\e[0;33m[\u@\D{%d.%m.%Y}\A \w]\$ \e[m"' >> /root/.ashrc
+  echo 'export PS1="\e[0;33m[\u@\D{%d.%m.%Y}\A \w]\$ \e[m"' >> /root/.ashrc && \
+  sudo apk update && sudo apk install openssh-client
 
 # Always and for all projects my working folder is..
 WORKDIR /usr/src                                   
@@ -108,4 +109,4 @@ EXPOSE 3000
 # https://responsivecodex.wordpress.com
 #ENTRYPOINT ["/bin/ash","forwardip.sh"]         
   
-ENTRYPOINT ["/bin/ash"] 
+ENTRYPOINT ["/bin/ash"]
