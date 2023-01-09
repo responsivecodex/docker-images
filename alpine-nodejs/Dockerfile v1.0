@@ -97,7 +97,7 @@ RUN  echo admin:#Access2010# | chpasswd && \
   echo "export PS1=\"\e[0;33m[\u@\D{%d.%m.%Y}\A \w]\$ \e[m\"" >> /etc/profile.d/rc.sh  && \
   chmod +x /etc/profile.d/rc.sh && \
   echo 'export PS1="\e[0;33m[\u@\D{%d.%m.%Y}\A \w]\$ \e[m"' >> /root/.ashrc && \
-  sudo apk update && sudo apk install openssh-client
+  sudo apk update && sudo apk add --update openssh-client
 
 # Always and for all projects my working folder is..
 WORKDIR /usr/src                                   
