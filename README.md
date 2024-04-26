@@ -42,6 +42,27 @@ Provide a set of images Docker's to work.
 - Ckecking OS version
   - cat /etc/os-release
 
+# Setup VS Code
+- Starting:
+  - Terminal its not configured!, then open settings.json y paste this (apply if running VS Code on Windows):
+   
+    ```
+      "workbench.colorTheme": "Default Dark Modern",
+      "editor.minimap.enabled": false,
+      "prettier.printWidth": 180,
+      "files.autoSave": "afterDelay",
+      "files.autoSaveDelay": 2000,
+      "terminal.integrated.profiles.windows": {
+        "Custom Init": {
+            "path": "C:\\Windows\\System32\\cmd.exe",
+            "args": [
+                
+            ]
+        }
+      },
+      "terminal.integrated.defaultProfile.windows": "Custom Init"
+    ```
+    3.     
   
 # Docker commands
 - Build a image
